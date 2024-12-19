@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './tareas.component.scss'
 })
 export class TareasComponent {
-
+  tittle = "Tareas";
 }

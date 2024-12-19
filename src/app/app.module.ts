@@ -1,22 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router'; // Asegúrate de importar RouterModule
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { AppComponent } from './app.component'; 
+import { AppRoutingModule } from './app-routing.module'; 
 
-@NgModule(
-    {
-  declarations: [
-    AppComponent
-  ],
+@NgModule({
+  declarations: [], 
   imports: [
-    BrowserModule,
-    RouterModule,
-    AppRoutingModule // Configuración inicial de rutas
+    BrowserModule, // Proporciona funcionalidades básicas del navegador
+    RouterModule, // Permite el uso de rutas
+    AppRoutingModule // Importa las rutas principales de la aplicación
   ],
-  providers: [],
-  bootstrap: [AppComponent]
-    }
-)
+  providers: [],  
+})
 
 export class AppModule { }

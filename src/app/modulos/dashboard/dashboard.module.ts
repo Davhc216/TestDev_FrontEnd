@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { DashboardRoutingModule } from './dashboard-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 
+const routes: Routes = [
+  { path: '', component: DashboardComponent } // Ruta principal del módulo
+];
 
 @NgModule({
-  declarations: [
-    DashboardComponent
-  ],
+  declarations: [DashboardComponent], // Declaración del componente del módulo
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    RouterModule.forChild(routes) // Configuración de rutas del módulo
   ]
 })
 export class DashboardModule { }
-
