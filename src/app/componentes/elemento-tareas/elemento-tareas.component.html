@@ -1,1 +1,16 @@
-<p>elemento-tareas works!</p>
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<body>
+    <div class="tarea" appClaseCondicional [condicion]="isVencida(tarea)" claseVerdadero="tarea-vencida"
+        claseFalso="tarea-pendiente">
+        <span>{{ tarea.nombre }} - Fecha: {{ tarea.fechaVencimiento | date }}</span>
+        <button (click)="eliminarTarea()">Eliminar</button>
+    </div>
+
+</body>
+
+</html>

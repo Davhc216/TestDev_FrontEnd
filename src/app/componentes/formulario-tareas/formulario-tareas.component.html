@@ -1,1 +1,25 @@
-<p>formulario-tareas works!</p>
+<!DOCTYPE html>
+
+<html lang="en">
+
+<body>
+
+    <form [formGroup]="formularioTareas" (ngSubmit)="guardarTarea()">
+        <div>
+          <label>Nombre de la tarea:</label>
+          <input type="text" formControlName="nombre" />
+          <div appMensajeValidacion [appMensajeValidacion]="formularioTareas.get('nombre')?.invalid" mensaje="El nombre es obligatorio"></div>
+        </div>
+      
+        <div>
+          <label>Fecha de vencimiento:</label>
+          <input type="date" formControlName="fechaVencimiento" />
+          <div appMensajeValidacion [appMensajeValidacion]="formularioTareas.get('fechaVencimiento')?.invalid" mensaje="La fecha es obligatoria"></div>
+        </div>
+      
+        <button type="submit" [disabled]="formularioTareas.invalid">Guardar</button>
+      </form>
+      
+</body>
+
+</html>

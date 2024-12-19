@@ -1,1 +1,13 @@
-<p>lista-tareas works!</p>
+<!DOCTYPE html>
+<html lang="es">
+
+<body>
+    
+    <div *ngFor="let tarea of tareas" [appResaltarTarea]="tarea.fechaVencimiento">
+        {{ tarea.nombre }} - Fecha: {{ tarea.fechaVencimiento | date }}
+     
+    </div>
+      
+</body>
+
+</html>
