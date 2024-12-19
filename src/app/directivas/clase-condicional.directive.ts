@@ -1,22 +1,29 @@
 import { Directive, ElementRef, Input, OnChanges, Renderer2 } from '@angular/core';
 
+/**
+ * Directiva para aplicar clases CSS dinámicas en función de una condición.
+ * - `condicion`: La condición evaluada.
+ * - `claseVerdadero`: Clase CSS si la condición es verdadera.
+ * - `claseFalso`: Clase CSS si la condición es falsa.
+ */
 @Directive({
-  selector: '[appClaseCondicional]' // selector para el atributo
+  selector: '[appClaseCondicional]',
+  standalone: true
 })
-export class ClaseCondicionalDirective implements OnChanges { // implementa la interfaz OnChanges
-  @Input() condicion!: boolean; // atributo condicion que se puede pasar desde el componente padre
-  @Input() claseVerdadero!: string; // atributo claseVerdadero que se puede pasar desde el componente padre
-  @Input() claseFalso!: string; // atributo claseFalso que se puede pasar desde el componente padre
+export class ClaseCondicionalDirective implements OnChanges {
+  @Input() condicion!: boolean;
+  @Input() claseVerdadero!: string;
+  @Input() claseFalso!: string;
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {} // inyecta el ElementRef y el Renderer2
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-  ngOnChanges() { // método que se ejecuta cuando se detecta un cambio en los inputs
-    if (this.condicion) { // si la condicion es verdadera
-      this.renderer.addClass(this.el.nativeElement, this.claseVerdadero); // agrega la clase verdadera
-      this.renderer.removeClass(this.el.nativeElement, this.claseFalso); // elimina la clase falsa
+  ngOnChanges() {
+    if (this.condicion) {
+      this.renderer.addClass(this.el.nativeElement, this.claseVerdadero);
+      this.renderer.removeClass(this.el.nativeElement, this.claseFalso);
     } else {
-      this.renderer.addClass(this.el.nativeElement, this.claseFalso); // agrega la clase falsa
-      this.renderer.removeClass(this.el.nativeElement, this.claseVerdadero); // elimina la clase verdadera
+      this.renderer.addClass(this.el.nativeElement, this.claseFalso);
+      this.renderer.removeClass(this.el.nativeElement, this.claseVerdadero);
     }
   }
 }

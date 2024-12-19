@@ -1,13 +1,11 @@
-import { Component } from '@angular/core'; 
-import { RouterModule } from '@angular/router'; 
+import { Component } from '@angular/core';
+import { ListaTareasComponent } from './componentes/lista-tareas/lista-tareas.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true, // Marca el componente como standalone
-  imports:[RouterModule], // Importa el módulo de rutas
-  templateUrl: './app.component.html', // Ruta del archivo HTML
-  styleUrls: ['./app.component.scss'] // Ruta del archivo CSS
+  standalone: true,
+  imports: [ListaTareasComponent], // Usa ListaTareasComponent como hijo
+  template: '<app-lista-tareas></app-lista-tareas>', // Usa el selector de ListaTareasComponent
+  styleUrls: ['./app.component.scss'] 
 })
-export class AppComponent {
-  title = 'TestDev_FrontEnd'; // Titulo de la aplicación
-}
+export class AppComponent {}

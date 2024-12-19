@@ -1,7 +1,8 @@
 import { Directive, ElementRef, Input, OnChanges } from '@angular/core'; 
 
 @Directive({
-  selector: '[appResaltarTarea]' // selector para el atributo
+  selector: '[appResaltarTarea]', // selector para el atributo
+  standalone: true
 })
 export class ResaltarTareaDirective implements OnChanges { // implementa la interfaz OnChanges
   @Input() appResaltarTarea!: Date; // el atributo que se va a pasar desde el componente padre
@@ -10,7 +11,7 @@ export class ResaltarTareaDirective implements OnChanges { // implementa la inte
 
   ngOnChanges() { // método que se llama cuando se produce un cambio en el componente
     const ahora = new Date(); // obtiene la fecha actual
-    const vencimiento = new Date(this.appResaltarTarea); // convierte la fecha de vencimiento a Date
+    const vencimiento = this.appResaltarTarea; // convierte la fecha de vencimiento a Date
 
     if (vencimiento < ahora) { // si la fecha de vencimiento es menor que la fecha actual
     this.el.nativeElement.style.backgroundColor = 'red'; // cambia el color de fondo del elemento a rojo

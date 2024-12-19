@@ -3,11 +3,10 @@
 <html lang="en">
 
 <body>
-
-    <form [formGroup]="formularioTareas" (ngSubmit)="guardarTarea()">
+    <form [formGroup]="formularioTareas" (ngSubmit)="guardarTarea()"> 
         <div>
-          <label>Nombre de la tarea:</label>
-          <input type="text" formControlName="nombre" />
+          <label>Nombre de la tarea:</label> 
+          <input type="text" formControlName="nombre" /> 
           <div appMensajeValidacion [appMensajeValidacion]="formularioTareas.get('nombre')?.invalid" mensaje="El nombre es obligatorio"></div>
         </div>
       

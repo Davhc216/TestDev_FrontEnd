@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
 
-<body>
-    
+
+<div *ngIf="tareas.length === 0">
+    No hay tareas disponibles
+  </div>
+  
+  <div *ngIf="tareas.length > 0">
     <div *ngFor="let tarea of tareas" [appResaltarTarea]="tarea.fechaVencimiento">
-        {{ tarea.nombre }} - Fecha: {{ tarea.fechaVencimiento | date }}
-     
+      {{ tarea.nombre }} - Fecha: {{ tarea.fechaVencimiento | date }}
     </div>
-      
-</body>
-
-</html>
+  </div>
