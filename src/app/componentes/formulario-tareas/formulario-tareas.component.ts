@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MensajeValidacionDirective } from '../../directivas/mensaje-validacion.directive';
 
 @Component({
@@ -9,15 +9,28 @@ import { MensajeValidacionDirective } from '../../directivas/mensaje-validacion.
   templateUrl: './formulario-tareas.component.html',
   styleUrls: ['./formulario-tareas.component.scss']
 })
-export class FormularioTareasComponent {
-  formularioTareas = this.fb.group({
-    nombre: ['', Validators.required],
-    fechaVencimiento: ['', Validators.required]
-  });
+export class FormularioTareasComponent implements OnInit {
+  formularioTareas: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
+    // Inicialización del formulario
+    this.formularioTareas = this.fb.group({
+      nombre: ['', Validators.required],
+      fechaVencimiento: ['', Validators.required]
+    });
+  }
 
-  guardarTarea() {
+  ngOnInit(): void {}
+
+  get esNombreInvalido(): boolean {
+    return !!this.formularioTareas.get('nombre')?.invalid;
+  }
+  
+  get esFechaVencimientoInvalida(): boolean {
+    return !!this.formularioTareas.get('fechaVencimiento')?.invalid;
+  }  
+
+  guardarTarea(): void {
     if (this.formularioTareas.valid) {
       console.log('Tarea guardada:', this.formularioTareas.value);
     }

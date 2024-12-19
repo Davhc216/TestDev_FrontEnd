@@ -10,7 +10,7 @@ import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
   standalone: true
 })
 export class MensajeValidacionDirective implements OnChanges {
-  @Input() appMensajeValidacion!: boolean; // Condición para mostrar el mensaje
+  @Input() appMensajeValidacion: boolean = false; // Indica si se debe mostrar el mensaje
   @Input() mensaje!: string; // Texto del mensaje
 
   constructor(private el: ElementRef) {}
