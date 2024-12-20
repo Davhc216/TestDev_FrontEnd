@@ -1,11 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
 
+<body>
 
-<div *ngIf="tareas.length === 0">
-    No hay tareas disponibles
-  </div>
-  
-  <div *ngIf="tareas.length > 0">
-    <div *ngFor="let tarea of tareas" [appResaltarTarea]="tarea.fechaVencimiento">
-      {{ tarea.nombre }} - Fecha: {{ tarea.fechaVencimiento | date }}
-    </div>
-  </div>
+  <div class="lista-tareas-container">
+    <h2>Lista de Tareas</h2>
+    <ul>
+      <li *ngFor="let tarea of tareas" [resaltarTarea]="tarea.prioridad">
+        {{ tarea.nombre }}
+        <button (click)="editarTarea(tarea)">Editar</button>
+        <button (click)="eliminarTarea(tarea)">Eliminar</button>
+      </li>
+    </ul>
+  </div>  
+
+</body>
+
+</html>

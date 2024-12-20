@@ -1,27 +1,20 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Importa CommonModule
-import { ClaseCondicionalDirective } from '../../directivas/clase-condicional.directive';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-elemento-tareas',
-  standalone: true,
-  imports: [CommonModule, ClaseCondicionalDirective], // Agrega CommonModule aquí
   templateUrl: './elemento-tareas.component.html',
   styleUrls: ['./elemento-tareas.component.scss']
 })
 export class ElementoTareasComponent {
-  tarea = { 
-    nombre: 'Tarea 1', 
-    fechaVencimiento: new Date('2024-12-25') 
-  };
+  @Input() tarea: any; // Recibe datos del componente padre
+  @Output() editar = new EventEmitter<any>(); // Emite un evento cuando se edite la tarea
+  @Output() eliminar = new EventEmitter<any>(); // Emite un evento cuando se elimine la tarea
 
-  isVencida(tarea: any): boolean {
-    const hoy = new Date();
-    return tarea.fechaVencimiento < hoy;
+  editarTarea(): void {
+    this.editar.emit(this.tarea); // Emite el evento con los datos de la tarea
   }
 
   eliminarTarea(): void {
-    console.log(`Tarea eliminada: ${this.tarea.nombre}`);
-    // Aquí puedes implementar la lógica para eliminar la tarea
+    this.eliminar.emit(this.tarea); // Emite el evento con los datos de la tarea
   }
 }
