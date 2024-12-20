@@ -1,19 +1,23 @@
-<!DOCTYPE html>
-<html lang="es">
+<div class="lista-tareas-container">
+  <h2>Lista de Tareas</h2>
 
-<body>
+  <!-- Formulario para agregar tareas -->
+  <form (ngSubmit)="agregarTarea()">
+    <label>Nombre:</label>
+    <input type="text" [(ngModel)]="nuevaTarea.nombre" name="nombre" required />
 
-  <div class="lista-tareas-container">
-    <h2>Lista de Tareas</h2>
-    <ul>
-      <li *ngFor="let tarea of tareas" [resaltarTarea]="tarea.prioridad">
-        {{ tarea.nombre }}
-        <button (click)="editarTarea(tarea)">Editar</button>
-        <button (click)="eliminarTarea(tarea)">Eliminar</button>
-      </li>
-    </ul>
-  </div>  
+    <label>Fecha de vencimiento:</label>
+    <input type="date" [(ngModel)]="nuevaTarea.fechaVencimiento" name="fechaVencimiento" required />
 
-</body>
+    <button type="submit">Agregar</button>
+  </form>
 
-</html>
+  <!-- Lista de tareas -->
+  <ul>
+    <li *ngFor="let tarea of tareas" [resaltarTarea]="tarea.fechaVencimiento">
+      {{ tarea.nombre }} - {{ tarea.fechaVencimiento | date: 'yyyy-MM-dd' }}
+      <button (click)="editarTarea(tarea)">Editar</button>
+      <button (click)="eliminarTarea(tarea)">Eliminar</button>
+    </li>
+  </ul>
+</div>

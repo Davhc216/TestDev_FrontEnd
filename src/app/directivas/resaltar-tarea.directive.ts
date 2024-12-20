@@ -1,24 +1,27 @@
-import { Directive, ElementRef, Input, OnChanges } from '@angular/core'; 
+import { Directive, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Directive({
-  selector: '[appResaltarTarea]', // selector para el atributo
-  standalone: true
+  selector: '[resaltarTarea]',
+  standalone: true,
 })
-export class ResaltarTareaDirective implements OnChanges { // implementa la interfaz OnChanges
-  @Input() appResaltarTarea!: Date; // el atributo que se va a pasar desde el componente padre
+export class ResaltarTareaDirective implements OnChanges { // Implementa OnChanges
+  @Input() resaltarTarea!: string | Date; // Permite recibir tanto string como Date
 
-  constructor(private el: ElementRef) {} // inyecta el ElementRef para acceder al elemento HTML
+  constructor(private el: ElementRef) {}
 
-  ngOnChanges() { // método que se llama cuando se produce un cambio en el componente
-    const ahora = new Date(); // obtiene la fecha actual
-    const vencimiento = this.appResaltarTarea; // convierte la fecha de vencimiento a Date
+  ngOnChanges(changes: SimpleChanges): void { // Implementación explícita
+    if (changes['resaltarTarea']) {
+      const valor = changes['resaltarTarea'].currentValue;
+      const vencimiento = new Date(valor); // Convierte siempre a Date
+      const ahora = new Date();
 
-    if (vencimiento < ahora) { // si la fecha de vencimiento es menor que la fecha actual
-    this.el.nativeElement.style.backgroundColor = 'red'; // cambia el color de fondo del elemento a rojo
-      this.el.nativeElement.style.color = 'white'; // cambia el color del texto a blanco
-    } else {
-      this.el.nativeElement.style.backgroundColor = 'green'; // cambia el color de fondo del elemento a verde
-      this.el.nativeElement.style.color = 'white'; // cambia el color del texto a blanco
+      if (vencimiento < ahora) {
+        this.el.nativeElement.style.backgroundColor = 'red';
+        this.el.nativeElement.style.color = 'white';
+      } else {
+        this.el.nativeElement.style.backgroundColor = 'green';
+        this.el.nativeElement.style.color = 'white';
+      }
     }
   }
 }
