@@ -18,6 +18,11 @@ export class ClaseCondicionalDirective implements OnChanges {
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   ngOnChanges() {
+    if (this.condicion === undefined || this.claseVerdadero === undefined || this.claseFalso === undefined) {
+      console.error('ClaseCondicionalDirective: Uno o más inputs no están definidos.');
+      return;
+    }
+  
     if (this.condicion) {
       this.renderer.addClass(this.el.nativeElement, this.claseVerdadero);
       this.renderer.removeClass(this.el.nativeElement, this.claseFalso);
@@ -26,4 +31,5 @@ export class ClaseCondicionalDirective implements OnChanges {
       this.renderer.removeClass(this.el.nativeElement, this.claseVerdadero);
     }
   }
+  
 }
