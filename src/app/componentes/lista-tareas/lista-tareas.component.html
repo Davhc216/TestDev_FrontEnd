@@ -1,28 +1,4 @@
-<<<<<<< HEAD
-<div class="lista-tareas-container">
-  <h2>Lista de Tareas</h2>
 
-  <!-- Formulario para agregar tareas -->
-  <form (ngSubmit)="agregarTarea()">
-    <label>Nombre:</label>
-    <input type="text" [(ngModel)]="nuevaTarea.nombre" name="nombre" required />
-
-    <label>Fecha de vencimiento:</label>
-    <input type="date" [(ngModel)]="nuevaTarea.fechaVencimiento" name="fechaVencimiento" required />
-
-    <button type="submit">Agregar</button>
-  </form>
-
-  <!-- Lista de tareas -->
-  <ul>
-    <li *ngFor="let tarea of tareas" [resaltarTarea]="tarea.fechaVencimiento">
-      {{ tarea.nombre }} - {{ tarea.fechaVencimiento | date: 'yyyy-MM-dd' }}
-      <button (click)="editarTarea(tarea)">Editar</button>
-      <button (click)="eliminarTarea(tarea)">Eliminar</button>
-    </li>
-  </ul>
-</div>
-=======
 <!DOCTYPE html>
 <html lang="es">
 
@@ -30,16 +6,29 @@
 
   <div class="lista-tareas-container">
     <h2>Lista de Tareas</h2>
+  
+    <form (ngSubmit)="agregarTarea()">
+      <div>
+        <label for="nombre">Nombre</label>
+        <input id="nombre" [(ngModel)]="nuevaTarea.nombre" name="nombre" required />
+      </div>
+      <div>
+        <label for="fecha">Fecha de Vencimiento</label>
+        <input id="fecha" type="date" [(ngModel)]="nuevaTarea.fechaVencimiento" name="fecha" required />
+      </div>
+      <button type="submit">Agregar</button>
+    </form>
+  
     <ul>
-      <li *ngFor="let tarea of tareas" [resaltarTarea]="tarea.prioridad">
-        {{ tarea.nombre }}
+      <li *ngFor="let tarea of tareas" [resaltarTarea]="tarea.fechaVencimiento">
+        {{ tarea.nombre }} - {{ tarea.fechaVencimiento }}
         <button (click)="editarTarea(tarea)">Editar</button>
         <button (click)="eliminarTarea(tarea)">Eliminar</button>
       </li>
     </ul>
-  </div>  
-
+  </div>
+  
 </body>
 
 </html>
->>>>>>> front
+

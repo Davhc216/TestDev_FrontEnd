@@ -1,44 +1,37 @@
-<<<<<<< HEAD
+// Este archivo integra los cambios realizados en ambas ramas: desarrollo y front.
+
 import { Directive, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
-
-@Directive({
-  selector: '[resaltarTarea]',
-  standalone: true,
-})
-export class ResaltarTareaDirective implements OnChanges { // Implementa OnChanges
-  @Input() resaltarTarea!: string | Date; // Permite recibir tanto string como Date
-
-  constructor(private el: ElementRef) {}
-
-  ngOnChanges(changes: SimpleChanges): void { // Implementación explícita
-    if (changes['resaltarTarea']) {
-      const valor = changes['resaltarTarea'].currentValue;
-      const vencimiento = new Date(valor); // Convierte siempre a Date
-      const ahora = new Date();
-
-      if (vencimiento < ahora) {
-        this.el.nativeElement.style.backgroundColor = 'red';
-        this.el.nativeElement.style.color = 'white';
-      } else {
-        this.el.nativeElement.style.backgroundColor = 'green';
-        this.el.nativeElement.style.color = 'white';
-      }
-    }
-=======
-import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
 
 @Directive({
   selector: '[resaltarTarea]',
   standalone: true
 })
 export class ResaltarTareaDirective implements OnChanges {
-  @Input() resaltarTarea: string = '';
+  @Input() resaltarTarea!: string | Date; // Admite tanto cadenas como fechas
 
   constructor(private el: ElementRef) {}
 
-  ngOnChanges(): void {
-    this.el.nativeElement.style.backgroundColor =
-      this.resaltarTarea === 'alta' ? 'red' : this.resaltarTarea === 'media' ? 'yellow' : 'green';
->>>>>>> front
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['resaltarTarea']) {
+      const valor = changes['resaltarTarea'].currentValue;
+
+      if (typeof valor === 'string') {
+        // Cambiar color según prioridad (alta, media, baja)
+        this.el.nativeElement.style.backgroundColor =
+          valor === 'alta' ? 'red' : valor === 'media' ? 'yellow' : 'green';
+      } else if (valor instanceof Date) {
+        // Cambiar color según la fecha (vencido o no)
+        const vencimiento = new Date(valor);
+        const ahora = new Date();
+
+        if (vencimiento < ahora) {
+          this.el.nativeElement.style.backgroundColor = 'red';
+          this.el.nativeElement.style.color = 'white';
+        } else {
+          this.el.nativeElement.style.backgroundColor = 'green';
+          this.el.nativeElement.style.color = 'white';
+        }
+      }
+    }
   }
 }
