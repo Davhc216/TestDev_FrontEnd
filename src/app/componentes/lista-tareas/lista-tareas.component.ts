@@ -16,6 +16,10 @@ export class ListaTareasComponent {
     { nombre: 'Tarea 3', prioridad: 'baja' }
   ];
 
+  agregarTarea(tarea: any) {
+    this.tareas.push(tarea);
+  }
+  
   editarTarea(tarea: any): void {
     console.log('Editar tarea:', tarea);
   }

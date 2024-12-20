@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { ListaTareasComponent } from './componentes/lista-tareas/lista-tareas.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ListaTareasComponent], // Usa ListaTareasComponent como hijo
-  template: '<app-lista-tareas></app-lista-tareas>', // Usa el selector de ListaTareasComponent
-  styleUrls: ['./app.component.scss'] 
+  imports: [RouterModule], // Importa el RouterModule para usar el enrutador
+  template: '<router-outlet></router-outlet>',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {}
