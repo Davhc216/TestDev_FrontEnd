@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="lista-tareas-container">
   <h2>Lista de Tareas</h2>
 
@@ -21,3 +22,24 @@
     </li>
   </ul>
 </div>
+=======
+<!DOCTYPE html>
+<html lang="es">
+
+<body>
+
+  <div class="lista-tareas-container">
+    <h2>Lista de Tareas</h2>
+    <ul>
+      <li *ngFor="let tarea of tareas" [resaltarTarea]="tarea.prioridad">
+        {{ tarea.nombre }}
+        <button (click)="editarTarea(tarea)">Editar</button>
+        <button (click)="eliminarTarea(tarea)">Eliminar</button>
+      </li>
+    </ul>
+  </div>  
+
+</body>
+
+</html>
+>>>>>>> front

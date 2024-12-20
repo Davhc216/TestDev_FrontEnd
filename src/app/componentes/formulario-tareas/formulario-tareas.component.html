@@ -2,6 +2,7 @@
 <html lang="es">
 
 <body>
+<<<<<<< HEAD
     <form [formGroup]="formulario" (ngSubmit)="guardarTarea()">
         <div>
             <label>Nombre de la tarea:</label>
@@ -21,6 +22,31 @@
     </form>
     
 
+=======
+    <div class="formulario-tareas-container">
+        <form [formGroup]="formularioTareas" (ngSubmit)="guardarTarea()">
+          <div>
+            <label for="nombre">Nombre</label>
+            <input id="nombre" formControlName="nombre" />
+            <!-- Uso correcto de la directiva -->
+            <span [appMensajeValidacion]="esNombreInvalido" [mensaje]="'El nombre es obligatorio.'">
+            </span>
+          </div>
+      
+          <div>
+            <label for="fechaVencimiento">Fecha de Vencimiento</label>
+            <input id="fechaVencimiento" type="date" formControlName="fechaVencimiento" />
+            <!-- Uso correcto de la directiva -->
+            <span [appMensajeValidacion]="esFechaVencimientoInvalida" [mensaje]="'La fecha de vencimiento es obligatoria.'">
+            </span>
+          </div>
+      
+          <button type="submit" [disabled]="formularioTareas.invalid">
+            Guardar Tarea
+          </button>
+        </form>
+      </div>      
+>>>>>>> front
 </body>
 
 </html>
