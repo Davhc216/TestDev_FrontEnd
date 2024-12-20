@@ -2,26 +2,29 @@
 <html lang="es">
 
 <body>
-    <form [formGroup]="formularioTareas" (ngSubmit)="guardarTarea()">
-        <div>
-            <label>Nombre de la tarea:</label>
-            <input type="text" formControlName="nombre" />
-            <div [appMensajeValidacion]="!!formularioTareas.get('nombre')?.invalid"
-                mensaje="El nombre es obligatorio">
-            </div>
-        </div>
-
-        <div>
-            <label>Fecha de vencimiento:</label>
-            <input type="date" formControlName="fechaVencimiento" />
-            <div [appMensajeValidacion]="!!formularioTareas.get('fechaVencimiento')?.invalid"
-                mensaje="La fecha es obligatoria">
-            </div>
-        </div>
-
-        <button type="submit" [disabled]="formularioTareas.invalid">Guardar</button>
-    </form>
-
+    <div class="formulario-tareas-container">
+        <form [formGroup]="formularioTareas" (ngSubmit)="guardarTarea()">
+          <div>
+            <label for="nombre">Nombre</label>
+            <input id="nombre" formControlName="nombre" />
+            <!-- Uso correcto de la directiva -->
+            <span [appMensajeValidacion]="esNombreInvalido" [mensaje]="'El nombre es obligatorio.'">
+            </span>
+          </div>
+      
+          <div>
+            <label for="fechaVencimiento">Fecha de Vencimiento</label>
+            <input id="fechaVencimiento" type="date" formControlName="fechaVencimiento" />
+            <!-- Uso correcto de la directiva -->
+            <span [appMensajeValidacion]="esFechaVencimientoInvalida" [mensaje]="'La fecha de vencimiento es obligatoria.'">
+            </span>
+          </div>
+      
+          <button type="submit" [disabled]="formularioTareas.invalid">
+            Guardar Tarea
+          </button>
+        </form>
+      </div>      
 </body>
 
 </html>

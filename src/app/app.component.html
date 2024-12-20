@@ -1,1 +1,24 @@
-<router-outlet></router-outlet>
+<router-outlet>
+
+    <!DOCTYPE html>
+    <html lang="es">
+
+    <div class="app">
+        <header class="app__header">
+            <h1 class="app__title">Sistema de Gestión de Tareas</h1>
+            <nav class="app__nav">
+                <ul class="app__menu">
+                    <li class="app__menu-item"><a routerLink="/home" routerLinkActive="active">Inicio</a></li>
+                    <li class="app__menu-item"><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+                    <li class="app__menu-item"><a routerLink="/tasks" routerLinkActive="active">Tareas</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="app__main">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+
+    </html>
+
+</router-outlet>
