@@ -8,15 +8,14 @@
           <input id="nombre" formControlName="nombre" />
           <div [appMensajeValidacion]="!!formulario.get('nombre')?.invalid" mensaje="El nombre es obligatorio"></div>
         </div>
-      
         <div>
           <label for="fechaVencimiento">Fecha de Vencimiento</label>
           <input id="fechaVencimiento" type="date" formControlName="fechaVencimiento" />
-          <div [appMensajeValidacion]="!!formulario.get('fechaVencimiento')?.invalid" mensaje="La fecha es obligatoria"></div>
+          <div [appMensajeValidacion]="!!formulario.get('fechaVencimiento')?.invalid" mensaje="La fecha de vencimiento es obligatoria"></div>
         </div>
-      
         <button type="submit" [disabled]="formulario.invalid">Guardar</button>
       </form>
+      
       
 </body>
 

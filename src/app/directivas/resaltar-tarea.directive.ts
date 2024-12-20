@@ -15,15 +15,10 @@ export class ResaltarTareaDirective implements OnChanges {
     if (changes['resaltarTarea']) {
       const valor = changes['resaltarTarea'].currentValue;
 
-      if (typeof valor === 'string') {
-        // Cambiar color según prioridad (alta, media, baja)
-        this.el.nativeElement.style.backgroundColor =
-          valor === 'alta' ? 'red' : valor === 'media' ? 'yellow' : 'green';
-      } else if (valor instanceof Date) {
-        // Cambiar color según la fecha (vencido o no)
+      if (typeof valor === 'string' && !isNaN(Date.parse(valor))) {
         const vencimiento = new Date(valor);
         const ahora = new Date();
-
+      
         if (vencimiento < ahora) {
           this.el.nativeElement.style.backgroundColor = 'red';
           this.el.nativeElement.style.color = 'white';

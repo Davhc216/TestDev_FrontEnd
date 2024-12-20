@@ -1,35 +1,29 @@
 import { Directive, ElementRef, Input, OnChanges, Renderer2 } from '@angular/core';
 
 /**
- * Directiva para aplicar clases CSS dinámicas en función de una condición.
- * - `condicion`: La condición evaluada.
- * - `claseVerdadero`: Clase CSS si la condición es verdadera.
- * - `claseFalso`: Clase CSS si la condición es falsa.
+ * Directiva para aplicar una clase CSS dinámica basada en un valor de entrada.
+ * - `appClaseCondicional`: El valor que determina la clase CSS a aplicar.
  */
 @Directive({
   selector: '[appClaseCondicional]',
   standalone: true
 })
 export class ClaseCondicionalDirective implements OnChanges {
-  @Input() condicion!: boolean;
-  @Input() claseVerdadero!: string;
-  @Input() claseFalso!: string;
+  @Input() appClaseCondicional!: string; // El valor que define la clase a aplicar
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   ngOnChanges() {
-    if (this.condicion === undefined || this.claseVerdadero === undefined || this.claseFalso === undefined) {
-      console.error('ClaseCondicionalDirective: Uno o más inputs no están definidos.');
+    if (!this.appClaseCondicional) {
+      console.error('ClaseCondicionalDirective: El valor de appClaseCondicional no está definido.');
       return;
     }
-  
-    if (this.condicion) {
-      this.renderer.addClass(this.el.nativeElement, this.claseVerdadero);
-      this.renderer.removeClass(this.el.nativeElement, this.claseFalso);
-    } else {
-      this.renderer.addClass(this.el.nativeElement, this.claseFalso);
-      this.renderer.removeClass(this.el.nativeElement, this.claseVerdadero);
-    }
+
+    // Limpiar cualquier clase existente
+    this.renderer.removeAttribute(this.el.nativeElement, 'class');
+
+    // Aplicar la nueva clase basada en el valor de appClaseCondicional
+    const clase = `prioridad-${this.appClaseCondicional.toLowerCase()}`;
+    this.renderer.addClass(this.el.nativeElement, clase);
   }
-  
 }

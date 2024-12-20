@@ -2,14 +2,12 @@
 
 <html lang="en">
 
-
-
 <body>
-    <div class="tarea" appClaseCondicional [condicion]="isVencida(tarea)" claseVerdadero="tarea-vencida" claseFalso="tarea-pendiente">
-        <span>{{ tarea.nombre }} - Fecha: {{ tarea.fechaVencimiento | date }}</span>
+    <li *ngFor="let tarea of tarea" [appClaseCondicional]="tarea.prioridad">
+        {{ tarea.nombre }} - {{ tarea.fechaVencimiento }}
+        <button (click)="editarTarea()">Editar</button>
         <button (click)="eliminarTarea()">Eliminar</button>
-    </div>
-    
+    </li>
 
 </body>
 

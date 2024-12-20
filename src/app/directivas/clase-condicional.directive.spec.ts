@@ -1,24 +1,47 @@
-import { ClaseCondicionalDirective } from "./clase-condicional.directive";
-import { MockElementRef } from '../mock/element-ref.mock';
+import { ResaltarTareaDirective } from './resaltar-tarea.directive';
 
-describe('ClaseCondicionalDirective', () => {
+describe('ResaltarTareaDirective', () => {
   let mockElementRef: any;
-  let mockRenderer: any;
 
   beforeEach(() => {
     mockElementRef = { nativeElement: document.createElement('div') };
-    mockRenderer = jasmine.createSpyObj('Renderer2', ['addClass', 'removeClass']);
   });
 
-  it('should add "claseVerdadero" when condicion is true', () => {
-    const directive = new ClaseCondicionalDirective(mockElementRef, mockRenderer);
-    directive.condicion = true;
-    directive.claseVerdadero = 'completada';
-    directive.claseFalso = 'pendiente';
+  it('should apply red background for expired tasks', () => {
+    const directive = new ResaltarTareaDirective(mockElementRef);
+    const fechaVencida = new Date(Date.now() - 24 * 60 * 60 * 1000); // Ayer
 
-    directive.ngOnChanges();
+    // Simular cambios en @Input
+    directive.resaltarTarea = fechaVencida.toISOString();
+    directive.ngOnChanges({
+      resaltarTarea: {
+        currentValue: fechaVencida.toISOString(),
+        previousValue: null,
+        firstChange: true,
+        isFirstChange: () => true,
+      },
+    });
 
-    expect(mockRenderer.addClass).toHaveBeenCalledWith(mockElementRef.nativeElement, 'completada');
-    expect(mockRenderer.removeClass).toHaveBeenCalledWith(mockElementRef.nativeElement, 'pendiente');
+    expect(mockElementRef.nativeElement.style.backgroundColor).toBe('red');
+    expect(mockElementRef.nativeElement.style.color).toBe('white');
+  });
+
+  it('should apply green background for non-expired tasks', () => {
+    const directive = new ResaltarTareaDirective(mockElementRef);
+    const fechaFutura = new Date(Date.now() + 24 * 60 * 60 * 1000); // Mañana
+
+    // Simular cambios en @Input
+    directive.resaltarTarea = fechaFutura.toISOString();
+    directive.ngOnChanges({
+      resaltarTarea: {
+        currentValue: fechaFutura.toISOString(),
+        previousValue: null,
+        firstChange: true,
+        isFirstChange: () => true,
+      },
+    });
+
+    expect(mockElementRef.nativeElement.style.backgroundColor).toBe('green');
+    expect(mockElementRef.nativeElement.style.color).toBe('white');
   });
 });
