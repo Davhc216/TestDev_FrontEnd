@@ -3,12 +3,36 @@
 
 <body>
 
-
   <section id="dashboard">
+    <!-- Encabezado Principal -->
     <header>
-      <h2>Dashboard</h2>
+      <h1>Dashboard</h1>
+      <nav>
+        <ul>
+          <li><a routerLink="/home">Home</a></li>
+          <li><a routerLink="/dashboard">Dashboard</a></li>
+          <li><a routerLink="/tareas">Tareas</a></li>
+        </ul>
+      </nav>
     </header>
     <main>
+      <section id="lista-tareas">
+        <h3>Lista de Tareas</h3>
+        <div class="tareas">
+            <div class="tarea">
+                <p>Nombre: Tarea 1</p>
+                <p>Fecha: 2024-12-25</p>
+                <button>Editar</button>
+                <button>Eliminar</button>
+            </div>
+            <div class="tarea">
+                <p>Nombre: Tarea 2</p>
+                <p>Fecha: 2024-12-30</p>
+                <button>Editar</button>
+                <button>Eliminar</button>
+            </div>
+        </div>
+    </section>
       <section id="estadisticas">
         <h3>Estadísticas</h3>
         <div class="graficos-interactivos">

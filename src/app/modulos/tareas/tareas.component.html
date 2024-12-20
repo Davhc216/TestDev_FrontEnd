@@ -4,46 +4,38 @@
 
 <body>
 
+
     <section id="modulo-tareas">
+        <!-- Encabezado Principal -->
         <header>
-          <h2>Módulo de Tareas</h2>
+            <h1>Gestion de tareas</h1>
+            <nav>
+                <ul>
+                    <li><a routerLink="/home">Home</a></li>
+                    <li><a routerLink="/dashboard">Dashboard</a></li>
+                    <li><a routerLink="/tareas">Tareas</a></li>
+                </ul>
+            </nav>
         </header>
         <main>
-          <section id="lista-tareas">
-            <h3>Lista de Tareas</h3>
-            <div class="tareas">
-              <div class="tarea">
-                <p>Nombre: Tarea 1</p>
-                <p>Fecha: 2024-12-25</p>
-                <button>Editar</button>
-                <button>Eliminar</button>
-              </div>
-              <div class="tarea">
-                <p>Nombre: Tarea 2</p>
-                <p>Fecha: 2024-12-30</p>
-                <button>Editar</button>
-                <button>Eliminar</button>
-              </div>
-            </div>
-          </section>
-          <section id="formulario-tareas">
-            <h3>Agregar Nueva Tarea</h3>
-            <form>
-              <label for="nombre-tarea">Nombre</label>
-              <input type="text" id="nombre-tarea" name="nombre">
-      
-              <label for="descripcion-tarea">Descripción</label>
-              <textarea id="descripcion-tarea" name="descripcion"></textarea>
-      
-              <label for="fecha-tarea">Fecha de Vencimiento</label>
-              <input type="date" id="fecha-tarea" name="fecha">
-      
-              <button type="submit">Agregar</button>
-            </form>
-          </section>
+            <section id="formulario-tareas">
+                <h3>Agregar Nueva Tarea</h3>
+                <form>
+                    <label for="nombre-tarea">Nombre</label>
+                    <input type="text" id="nombre-tarea" name="nombre">
+
+                    <label for="descripcion-tarea">Descripción</label>
+                    <textarea id="descripcion-tarea" name="descripcion"></textarea>
+
+                    <label for="fecha-tarea">Fecha de Vencimiento</label>
+                    <input type="date" id="fecha-tarea" name="fecha">
+
+                    <button type="submit">Agregar</button>
+                </form>
+            </section>
         </main>
-      </section>
-      
+    </section>
+
 
 </body>
 
