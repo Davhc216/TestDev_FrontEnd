@@ -19,7 +19,7 @@ export class TareasComponent {
   ngOnInit(): void {
     this.cargarTareas();
   }
-
+  
   cargarTareas(): void {
     this.tareasService.obtenerTareas().subscribe((tareas) => {
       this.tareas = tareas || [];

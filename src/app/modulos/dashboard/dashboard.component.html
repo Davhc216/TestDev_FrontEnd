@@ -1,49 +1,58 @@
-<section id="dashboard">
-  <!-- Encabezado Principal -->
-  <header>
-    <h1>Gestor de Tareas</h1>
-    <nav>
-      <ul>
-        <li><a routerLink="/dashboard">Dashboard</a></li>
-        <li><a routerLink="/tareas">Tareas</a></li>
-      </ul>
-    </nav>
-  </header>
+<!DOCTYPE html>
 
-  <h2>Dashboard</h2>
-  <main>
-    <section id="lista-tareas">
-      <h3>Lista de Tareas</h3>
-      <div class="tareas">
-        <div class="tarea">
-          <p><strong>Nombre:</strong> Tarea 1</p>
-          <p><strong>Fecha:</strong> 2024-12-25</p>
-          <button>Editar</button>
-          <button>Eliminar</button>
-        </div>
-        <div class="tarea">
-          <p><strong>Nombre:</strong> Tarea 2</p>
-          <p><strong>Fecha:</strong> 2024-12-30</p>
-          <button>Editar</button>
-          <button>Eliminar</button>
-        </div>
-      </div>
+<html lang="es">
+
+  <body>
+    <section id="dashboard">
+      <!-- Encabezado Principal -->
+      <header>
+        <h1>Gestor de Tareas</h1>
+        <nav>
+          <ul>
+            <li><a routerLink="/dashboard">Dashboard</a></li>
+            <li><a routerLink="/tareas">Tareas</a></li>
+          </ul>
+        </nav>
+      </header>
+    
+      <h2>Dashboard</h2>
+      <main>
+        <section id="lista-tareas">
+          <h3>Lista de Tareas</h3>
+          <div class="tareas">
+            <div class="tarea">
+              <p><strong>Nombre:</strong> Tarea 1</p>
+              <p><strong>Fecha:</strong> 2024-12-25</p>
+              <button>Editar</button>
+              <button>Eliminar</button>
+            </div>
+            <div class="tarea">
+              <p><strong>Nombre:</strong> Tarea 2</p>
+              <p><strong>Fecha:</strong> 2024-12-30</p>
+              <button>Editar</button>
+              <button>Eliminar</button>
+            </div>
+          </div>
+        </section>
+        <section id="estadisticas">
+          <h3>Estadísticas</h3>
+          <div class="graficos-interactivos">
+            <!-- Aquí puedes integrar gráficos interactivos -->
+            <div class="grafico">Gráfico 1</div>
+            <div class="grafico">Gráfico 2</div>
+          </div>
+        </section>
+        <section id="resumen-tareas">
+          <h3>Resumen de Tareas</h3>
+          <ul>
+            <li>Tarea 1 (Vencida)</li>
+            <li>Tarea 2 (Pendiente)</li>
+            <li>Tarea 3 (Completada)</li>
+          </ul>
+        </section>
+      </main>
     </section>
-    <section id="estadisticas">
-      <h3>Estadísticas</h3>
-      <div class="graficos-interactivos">
-        <!-- Aquí puedes integrar gráficos interactivos -->
-        <div class="grafico">Gráfico 1</div>
-        <div class="grafico">Gráfico 2</div>
-      </div>
-    </section>
-    <section id="resumen-tareas">
-      <h3>Resumen de Tareas</h3>
-      <ul>
-        <li>Tarea 1 (Vencida)</li>
-        <li>Tarea 2 (Pendiente)</li>
-        <li>Tarea 3 (Completada)</li>
-      </ul>
-    </section>
-  </main>
-</section>
+  </body>
+</html>
+
+
