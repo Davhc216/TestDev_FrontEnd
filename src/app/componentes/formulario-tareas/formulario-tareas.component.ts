@@ -5,13 +5,13 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-formulario-tareas',
+  standalone: true,
   templateUrl: './formulario-tareas.component.html',
   styleUrls: ['./formulario-tareas.component.scss'],
-  standalone: true,
-  imports: [ReactiveFormsModule, MensajeValidacionDirective, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, MensajeValidacionDirective], // Incluye la directiva
 })
 export class FormularioTareasComponent {
-  @Output() agregar = new EventEmitter<any>();
+  @Output() nuevaTarea = new EventEmitter<any>();
   formulario: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -23,7 +23,8 @@ export class FormularioTareasComponent {
 
   guardarTarea(): void {
     if (this.formulario.valid) {
-      this.agregar.emit(this.formulario.value);
+      const tarea = { ...this.formulario.value, id: Date.now() };
+      this.nuevaTarea.emit(tarea); // Emitir tarea al componente padre
       this.formulario.reset();
     }
   }

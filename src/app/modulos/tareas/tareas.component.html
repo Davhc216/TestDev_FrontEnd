@@ -1,34 +1,52 @@
 <section id="modulo-tareas">
-    <!-- Encabezado Principal -->
     <header>
-        <h1>Gestor de Tareas</h1>
-        <nav>
-            <ul>
-                <li><a routerLink="/dashboard">Dashboard</a></li>
-                <li><a routerLink="/tareas">Tareas</a></li>
-            </ul>
-        </nav>
+      <h1>Gestor de Tareas</h1>
+      <nav>
+        <ul>
+          <li><a routerLink="/dashboard">Dashboard</a></li>
+          <li><a routerLink="/tareas">Tareas</a></li>
+        </ul>
+      </nav>
     </header>
-
+  
     <h2>Tareas</h2>
     <main>
-        <section id="formulario-tareas">
-            <h3>Agregar Nueva Tarea</h3>
-            <form>
-                <div class="form-group">
-                    <label for="nombre-tarea">Nombre</label>
-                    <input type="text" id="nombre-tarea" name="nombre">
-                </div>
-                <div class="form-group">
-                    <label for="descripcion-tarea">Descripción</label>
-                    <textarea id="descripcion-tarea" name="descripcion"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="fecha-tarea">Fecha de Vencimiento</label>
-                    <input type="date" id="fecha-tarea" name="fecha">
-                </div>
-                <button type="submit" class="btn-agregar">Agregar</button>
-            </form>
-        </section>
+      <section id="formulario-tareas">
+        <h3>Agregar Nueva Tarea</h3>
+        <form (ngSubmit)="agregarTarea()">
+          <div class="form-group">
+            <label for="nombre-tarea">Nombre</label>
+            <input
+              type="text"
+              id="nombre-tarea"
+              name="nombre"
+              [(ngModel)]="nuevaTarea.nombre"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="fecha-tarea">Fecha de Vencimiento</label>
+            <input
+              type="date"
+              id="fecha-tarea"
+              name="fechaVencimiento"
+              [(ngModel)]="nuevaTarea.fechaVencimiento"
+              required
+            />
+          </div>
+          <button type="submit" class="btn-agregar">Agregar</button>
+        </form>
+      </section>
+  
+      <section id="lista-tareas">
+        <h3>Lista de Tareas</h3>
+        <ul>
+          <li *ngFor="let tarea of tareas">
+            <p>{{ tarea.nombre }} - {{ tarea.fechaVencimiento }}</p>
+            <button (click)="eliminarTarea(tarea.id)">Eliminar</button>
+          </li>
+        </ul>
+      </section>
     </main>
-</section>
+  </section>
+  
